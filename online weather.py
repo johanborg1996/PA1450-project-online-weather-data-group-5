@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np 
 import csv
 
-hejjohan vad gör du
 def readfiles():
 
     list_temperatur = []
@@ -61,14 +60,3 @@ def main():
             temperature(list_temperatur)
 
 main()
-
-hallå test
-
-
-print("hej")
-
-print("Hej Ahmad")
-
-fungerar det nu
-
-nudå
