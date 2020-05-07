@@ -38,7 +38,7 @@ def temperature(list_temperatur):
     # close, volume, adj_close from the mpl-data/example directory.  This array
     # stores the date as an np.datetime64 with a day unit ('D') in the 'date'
     # column.
-    with cbook.get_sample_data('goog.npz') as datafile:
+    with cbook.get_sample_data('temp.csv') as datafile:
         data = np.load(datafile)['price_data']
 
     fig, ax = plt.subplots()
