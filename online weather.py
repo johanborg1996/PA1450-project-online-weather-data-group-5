@@ -68,3 +68,5 @@ hallå test
 print("hej")
 
 print("Hej Ahmad")
+
+fungerar det nu
