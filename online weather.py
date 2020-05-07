@@ -33,7 +33,7 @@ import plotly.express as px
 
 
 
-print ('hello world!')    
+print ('hello!')
 
 
 def temperature(temp):
