@@ -60,3 +60,6 @@ def main():
             temperature(list_temperatur)
 
 main()
+
+
+print("hello")
