@@ -59,10 +59,10 @@ def interval_hour(temp, hours):
     df1 = df.set_index("Datum")
     interval1 = input("Enter the first date: ") # 2020-01-10 
     slice_start = int(df1.index.get_loc(interval1).start) #2020-01-10 = i(285) 285, 310 == slice_start = int(285)
-    df1 = df1.iloc[slice_start:(slice_start+hours), :] #om du ger interger värde så får du fram ett värde på det indexet. ":" = interval. Till 285 + 48
+    df1 = df1.iloc[slice_start:(slice_start + hours), :] #om du ger interger värde så får du fram ett värde på det indexet. ":" = interval. Till 285 + 48
+    df1 = df1.reset_index()
     new_df = pd.DataFrame(df1["Lufttemperatur"])
-    print(new_df)
-    fig = px.line(new_df, y="Lufttemperatur", title="Interval between " + interval1 + " to " + str(df.iloc[(slice_start+hours)][0]) , labels={"x":"Hours"})
+    fig = px.line(new_df, x = new_df.index, y="Lufttemperatur", title="Interval between " + interval1 + " to " + str(df.iloc[(slice_start+hours)][0]) , labels={"index":"Hours"})
     fig.show()
 
 
@@ -100,7 +100,7 @@ def interval_hour(temp, hours):
 
 # temperature("temp1.csv")
 # interval_temp("temp.csv")
-interval_hour("temp1.csv", 48)
+interval_hour("temp.csv", 48)
 
 
 #### blabla = index ????
