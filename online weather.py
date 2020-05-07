@@ -2,8 +2,6 @@ import pandas as pd
 import numpy as np 
 import csv
 import plotly.express as px
-
-hallå
 # def read_temp():
 
 #     list_temperature = []
@@ -43,6 +41,7 @@ def temperature(temp):
     fig.show()
 
 def interval_temp(temp):
+    #exempel på datum: 2020-12-28
     df = pd.read_csv(temp, sep=";")
     df = df.set_index("Datum")
     interval1 = input("Enter the first date: ")
