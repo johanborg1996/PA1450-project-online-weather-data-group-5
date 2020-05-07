@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np 
 import csv
 
-hejjohan
+hejjohan vad gör du
 def readfiles():
 
     list_temperatur = []
