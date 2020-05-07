@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-=======
 import pandas as pd 
 import numpy as np 
 import csv
 import plotly.express as px
 
-
+hej 
 # def read_temp():
 
 #     list_temperature = []
@@ -87,4 +85,3 @@ def temperature(temp):
 
 # sdfghfd
 temperature("temp1.csv")
->>>>>>> f78c08f560bc57f11031276cae2cb3fc901acc28
