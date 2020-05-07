@@ -3,7 +3,7 @@ import numpy as np
 import csv
 import plotly.express as px
 
-
+hallå
 # def read_temp():
 
 #     list_temperature = []
@@ -86,6 +86,5 @@ def interval_temp(temp):
 # print("hello")
 
 
-# sdfghfd
 temperature("temp1.csv")
 interval_temp("temp1.csv")
