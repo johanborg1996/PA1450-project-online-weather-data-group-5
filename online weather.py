@@ -38,17 +38,20 @@ import plotly.express as px
     
 
 def temperature(temp):
-
-    # temp_data = []
-    # for i in range(0,len(temp)):
-    #     temp_data.append(temp[i][2])
-    # temp_date = []
-    # for i in range(0,len(temp)):
-    #     temp_date.append(temp[i][0])
     df = pd.read_csv(temp, sep=";")
     fig = px.line(df, x="Datum", y="Lufttemperatur", title='Temperature over time')
     fig.show()
-    print(df)
+
+def interval_temp(temp):
+    df = pd.read_csv(temp, sep=";")
+    df = df.set_index("Datum")
+    interval1 = input("Enter the first date: ")
+    interval2 = input ("Enter the second date: ")
+    df1 = df.loc[interval1:interval2, :]
+    df1 = df1.reset_index()
+    fig = px.line(df1, x="Datum", y="Lufttemperatur", title='Temperature over time')
+    fig.show()
+
 
 
 # def sunshine(list_sunshine):
@@ -85,3 +88,4 @@ def temperature(temp):
 
 # sdfghfd
 temperature("temp1.csv")
+interval_temp("temp1.csv")
