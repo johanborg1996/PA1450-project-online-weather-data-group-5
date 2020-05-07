@@ -3,7 +3,7 @@ import numpy as np
 import csv
 import plotly.express as px
 
-hej 
+hallå
 # def read_temp():
 
 #     list_temperature = []
