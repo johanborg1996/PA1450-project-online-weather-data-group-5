@@ -46,9 +46,9 @@ def interval_temp(temp):
     df = df.set_index("Datum")
     interval1 = input("Enter the first date: ")
     interval2 = input ("Enter the second date: ")
-    df1 = df.loc[interval1:interval2, :]
-    df1 = df1.reset_index()
-    fig = px.line(df1, x="Datum", y="Lufttemperatur", title='Temperature over time')
+    df = df.loc[interval1:interval2, :]
+    df = df.reset_index()
+    fig = px.line(df, x="Datum", y="Lufttemperatur", title='Temperature over time')
     fig.show()
 
 
@@ -86,4 +86,4 @@ def interval_temp(temp):
 
 
 temperature("temp1.csv")
-interval_temp("temp1.csv")
+interval_temp("temp.csv")
