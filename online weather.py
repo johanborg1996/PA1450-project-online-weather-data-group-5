@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np 
 import csv
 import plotly.express as px
-import matplotlib.pyplot as plt
 
 def menu():
     choices = input('''
