@@ -95,11 +95,12 @@ def interval_hour(temp, hours):
 # print("hello")
 
 
-# temperature("temp1.csv")
-# interval_temp("temp.csv")
-interval_hour("temp.csv", 48)
+temperature("temp1.csv")
+#interval_temp("temp.csv")
+#interval_hour("temp.csv", 48)
 
 
 #### blabla = index ????
 #### search blabla == index
 #### index + 48 == intervall på 48h
+
