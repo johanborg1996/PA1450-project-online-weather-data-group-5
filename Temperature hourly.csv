@@ -1,4 +1,4 @@
-Datum;Tid (UTC);Lufttemperatur
+Datum;Tid (UTC);Temperature
 2019-12-29;01:00:00;2.0
 2019-12-29;02:00:00;2.5
 2019-12-29;03:00:00;3.1
