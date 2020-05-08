@@ -35,11 +35,8 @@ import plotly.express as px
 
 def temperature(temp):
     df = pd.read_csv(temp, sep=";")
-    # fig = px.line(df, x="Datum", y="Lufttemperatur", title='Temperature over time')
-    # fig.show()
-    df = df.set_index("Datum")
-    z = df.index.get_loc("2020-01-10")
-    print(z.start)
+    fig = px.line(df, x="Datum", y="Lufttemperatur", title='Temperature over time')
+    fig.show()
 
 def interval_temp(temp):
     #exempel på datum: 2020-12-28
@@ -58,7 +55,7 @@ def interval_hour(temp, hours):
     df = pd.read_csv(temp, sep=";") #df = dataframe
     df1 = df.set_index("Datum")
     interval1 = input("Enter the first date: ") # 2020-01-10 
-    slice_start = int(df1.index.get_loc(interval1).start) #2020-01-10 = i(285) 285, 310 == slice_start = int(285)
+    slice_start = int(df1.index.get_loc(interval1).start) #2020-01-10 = index(285) 285, 310 == slice_start = int(285)
     df1 = df1.iloc[slice_start:(slice_start + hours), :] #om du ger interger värde så får du fram ett värde på det indexet. ":" = interval. Till 285 + 48
     df1 = df1.reset_index()
     new_df = pd.DataFrame(df1["Lufttemperatur"])
