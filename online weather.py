@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np 
 import csv
 import plotly.express as px
+import matplotlib.pyplot as plt
 
 def menu():
     choices = input('''
@@ -103,34 +104,40 @@ def interval_hour(temp, hours):
     fig = px.line(new_df, x = new_df.index, y=Attribute, title="Interval between " + interval1 + " to " + str(df.iloc[(slice_start+hours)][0]) , labels={"index":"Hours"})
     fig.show()
 
+### broken code for multiple plots
 
-# def sunshine(list_sunshine):
+# def multiple_attributes(Attribute1, Attribute2):
+#     if Attribute1 == "Temperature":
+#         df = pd.read_csv("Temperature hourly.csv", sep=";")
+#     elif Attribute == "Sunshine":
+#         df = pd.read_csv("Sunshine.csv", sep=";")
+#     elif Attribute == "Downfall":
+#         df = pd.read_csv("Downfall hourly.csv", sep=";")
+#     if Attribute2 == "Temperature":
+#         df1 = pd.read_csv("Temperature hourly.csv", sep=";")
+#     elif Attribute2 == "Sunshine":
+#         df1 = pd.read_csv("Sunshine.csv", sep=";")
+#     elif Attribute2 == "Downfall":
+#         df1 = pd.read_csv("Downfall hourly.csv", sep=";")
+#     fig = make_subplots(rows=1, cols=2)
+#     df = df.set_index("Datum")
+#     df1 = df1.set_index("Datum")
 
+#     for i in df.index:
+#         fig.add_trace(
+#             go.Scatter({"x":i, "y": df.at[i, Attribute1]}, title=Attribute1 + " over time"),
+#             row=1, col=1
+#         )
+    
+#     for i in df1.index:
+#         fig.add_trace(
+#             go.Scatter({"x":i, "y": df.at[i, Attribute2]}, title=Attribute2 + " over time"),
+#             row=1, col=2
+#         )
 
+#     fig.update_layout(height=600, width=800, title_text="Side By Side Subplots")
+#     fig.show()
 
-# def rain(list_rain):
-
-
-
-
-
-# def main():
-#     readfiles()=list_rain,list_sunshine,list_temperature
-#     answer = ""
-#     while answer != "5":
-#         str(input("what do you want to do?"))
-#         print("1. Show temperature graph")
-#         print("2. Show sunshine graph")
-#         print("3. Show rain graph")
-
-#         if answer == "1":
-#             temperature(list_temperature)
-#         if answer == "2":
-#             temperature(list_temperature)
-#         if answer == "3":
-#             temperature(list_temperature)
-
-# main()
 
 
 while menus != "":
@@ -148,9 +155,11 @@ while menus != "":
         hours = int(input("Select over how many hours you want to view: "))
         interval_hour(Attribute, hours)
         menus = menu()
-    # elif menus == "D":
-    #     d_tree = build_decision_tree(d_f)
-    #     menus = menu()
+    elif menus == "D":
+        Attribute1 = input("Choose the base attribute you want to compare against [Temperature, Sunshine, Downfall]: ")
+        Attribute2 = input("Choose the second attribute you want to compare with [Temperature, Sunshine, Downfall]: ")
+        multiple_attributes(Attribute1, Attribute2)
+        menus = menu()
     # elif menus == "E":
     #     t_data = add_observation(d_f, test_data_df)
     #     menus = menu()
