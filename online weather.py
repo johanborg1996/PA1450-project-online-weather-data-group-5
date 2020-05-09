@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np 
 import csv
 import plotly.express as px
+import datetime
 
 def menu():
     choices = input('''
@@ -38,25 +39,66 @@ menus = menu()
 #     print(list_temperature)
 #     return list_temperature
 
-# def read_sunshine():
 
-#     list_sunshine = []
-#     with open('solskenstid.csv', 'r') as file:
-#         reader = csv.reader(file)
-#         for row in reader:
-#             list_sunshine.append(row)
-#     print(list_sunshine)
-#     return list_sunshine
+def perc_sunshine():
+    list_sunshine = []
+    with open('solskenstid.csv', 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            list_sunshine.append(row)
+    interval1 = str(input("Enter the first date: "))
+    interval2 = str(input ("Enter the second date: "))
 
-# def read_rain():
-#     list_rain = []
-#     with open('nederbörd.csv', 'r') as file:
-#         reader = csv.reader(file)
-#         for row in reader:
-#             list_rain.append(row)
-#     print(list_rain)
-#     return list_rain
+    interval1 = datetime.datetime.strptime(interval1, '%Y-%m-%d')
+    interval2 = datetime.datetime.strptime(interval2, '%Y-%m-%d')
+    hours_from_start_date = (abs((interval2-interval1).days)+1)*24
+    print(hours_from_start_date)
 
+    interval1Str = interval1.strftime("%Y-%m-%d")
+    interval2Str = interval2.strftime("%Y-%m-%d")
+    interval1 = interval1Str[0:10]
+    interval2 = interval2Str[0:10]
+    counter = 0
+    for i in range(1,len(list_sunshine)):
+        if list_sunshine[i][0][0:10] == interval1 and counter == 0:
+            counter += 1   
+            sunshine_seconds = 0
+            for k in range(i, i + hours_from_start_date):
+                sunshine_seconds += int(list_sunshine[k][0][20:])
+    sunshine_percent_hours = (((sunshine_seconds / 3600) / hours_from_start_date) * 100)
+    print(sunshine_percent_hours)
+
+perc_sunshine()
+
+def perc_downfall():
+    list_downfall = []
+    with open('Downfall hourly.csv', 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            list_downfall.append(row)
+    interval3 = str(input("Enter the first date: "))
+    interval4 = str(input ("Enter the second date: "))
+
+    interval3 = datetime.datetime.strptime(interval3, '%Y-%m-%d')
+    interval4 = datetime.datetime.strptime(interval4, '%Y-%m-%d')
+    hours_from_start_date = (abs((interval4-interval3).days)+1)*24
+    print(hours_from_start_date)
+
+    interval3Str = interval3.strftime("%Y-%m-%d")
+    interval4Str = interval4.strftime("%Y-%m-%d")
+    interval3 = interval3Str[0:10]
+    interval4 = interval4Str[0:10]
+    counter = 0
+    for i in range(1,len(list_downfall)):
+        if list_downfall[i][0][0:10] == interval3 and counter == 0:
+            counter += 1   
+            downfall_seconds = 0
+            for k in range(i, i + hours_from_start_date):
+                downfall_seconds += int(list_downfall[k][0][20:])
+    downfall_percent_hours = (((downfall_seconds / 3600) / hours_from_start_date) * 100)
+    print(downfall_percent_hours)
+
+perc_downfall()
 
 
 def Attribute_over_time(Attribute):
