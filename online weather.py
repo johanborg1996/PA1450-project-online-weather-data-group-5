@@ -11,10 +11,10 @@ def menu():
     Welcome to Group 5 weather program! Please choose one of the options below:
         A: View selected Attribute over time
         B: View selected attribute over an interval
-        C: Add manual data
-        D: Build decision tree
-        E: Add new observation
-        F: Classify test data
+        C: View attribute per hour
+        D: Compare attributes
+        E: Write report over percentage sunshine
+        F: Write report over percentage rain
         G: Quit 
         ''').upper()
     R_choices = ("A","B","C","D","E","F","G")
@@ -23,10 +23,10 @@ def menu():
         choices = input('''
         A: View selected Attribute over time
         B: View selected attribute over an interval
-        C: Add manual data
-        D: Build decision tree
-        E: Add new observation
-        F: Classify test data
+        C: View attribute per hour
+        D: Compare attributes
+        E: Write report over percentage sunshine
+        F: Write report over percentage rain
         G: Quit 
         ''').upper()
     return choices
@@ -185,13 +185,12 @@ while menus != "":
     elif menus == "E":
         perc_sunshine()
         menus = menu()
-    # elif menus == "F":
-    #     print(Classify(t_data, d_tree, d_f))
-    #     menus = menu()
+    elif menus == "F":
+        perc_downfall()
+        menus = menu()
     elif menus == "G":
         inp = input("Are you sure? Yes/No: ")
         if inp == "yes" or inp == "Yes":
             break
         elif inp == "no" or inp == "No":
             menus = menu()
-
