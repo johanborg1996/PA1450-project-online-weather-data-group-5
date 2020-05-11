@@ -32,21 +32,19 @@ def menu():
     return choices
 menus = menu()
 
-
-
 def perc_sunshine():
     list_sunshine = []
     with open('solskenstid.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
             list_sunshine.append(row)
+    file.close()
     interval1 = str(input("Enter the first date: "))
     interval2 = str(input ("Enter the second date: "))
 
     interval1 = datetime.datetime.strptime(interval1, '%Y-%m-%d')
     interval2 = datetime.datetime.strptime(interval2, '%Y-%m-%d')
     hours_from_start_date = (abs((interval2-interval1).days)+1)*24
-    print(hours_from_start_date)
 
     interval1Str = interval1.strftime("%Y-%m-%d")
     interval2Str = interval2.strftime("%Y-%m-%d")
@@ -59,17 +57,23 @@ def perc_sunshine():
             sunshine_seconds = 0
             for k in range(i, i + hours_from_start_date):
                 sunshine_seconds += int(list_sunshine[k][0][20:])
-    sunshine_percent_hours = (((sunshine_seconds / 3600) / hours_from_start_date) * 100)
-    print(sunshine_percent_hours)
-
-# perc_sunshine() ###tar bort då den loopar genom funktionen hela tiden vilket gör menyn meningslös
-
+    sunshine_hours = str(round((sunshine_seconds / 3600),3))
+    sunshine_percent_hours = str((round((((sunshine_seconds / 3600) / hours_from_start_date) * 100),3)))
+    hours_from_start_date = str(hours_from_start_date)
+    file_open = open("Rapport Sunshine.txt","w")
+    file_open.write("Percent sunshine hours over the intervall: " + sunshine_percent_hours + " %" + "\nStart Date: " + interval1 + "\nEnd Date: " 
+    + interval2 + "\nTotal number of hours: " + hours_from_start_date + "h \nNumber of sunshine hours: " + sunshine_hours + "h")
+    file_open.close()
+    
+    
 def perc_downfall():
     list_downfall = []
     with open('Downfall hourly.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
             list_downfall.append(row)
+    file.close()
+
     interval3 = str(input("Enter the first date: "))
     interval4 = str(input ("Enter the second date: "))
 
@@ -86,13 +90,16 @@ def perc_downfall():
     for i in range(1,len(list_downfall)):
         if list_downfall[i][0][0:10] == interval3 and counter == 0:
             counter += 1   
-            downfall_seconds = 0
+            downfall_tot = 0
             for k in range(i, i + hours_from_start_date):
-                downfall_seconds += int(list_downfall[k][0][20:])
-    downfall_percent_hours = (((downfall_seconds / 3600) / hours_from_start_date) * 100)
-    print(downfall_percent_hours)
-
-# perc_downfall() ###tar bort då den loopar genom funktionen hela tiden vilket gör menyn meningslös
+                downfall_tot += float(list_downfall[k][0][20:])
+    average_downfall_per_hour = str(round((downfall_tot / hours_from_start_date),3))
+    hours_from_start_date = str(hours_from_start_date)
+    downfall_tot = str(downfall_tot)
+    file_open_2 = open("Rapport Downfall.txt","w")
+    file_open_2.write("Average downfall per hour over the intervall: " + average_downfall_per_hour + " mm/h" + "\nStart Date: " + interval3 + "\nEnd Date: " 
+    + interval4 + "\nTotal number of hours: " + hours_from_start_date + " h \nTotal amount of rain: " + downfall_tot + " mm")
+    file_open_2.close()
 
 
 def Attribute_over_time(Attribute):
