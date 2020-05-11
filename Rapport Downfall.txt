@@ -1,0 +1,5 @@
+Average downfall per hour over the intervall: 0.043 mm/h
+Start Date: 2020-01-10
+End Date: 2020-01-20
+Total number of hours: 264 h 
+Total amount of rain: 11.299999999999997 mm

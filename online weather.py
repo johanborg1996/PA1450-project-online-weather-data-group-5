@@ -39,8 +39,8 @@ def perc_sunshine():
         for row in reader:
             list_sunshine.append(row)
     file.close()
-    interval1 = str(input("Enter the first date: "))
-    interval2 = str(input ("Enter the second date: "))
+    interval1 = str(input("Enter the first date, ex: 2020-01-10: "))
+    interval2 = str(input ("Enter the second date, ex: 2020-01-20: "))
 
     interval1 = datetime.datetime.strptime(interval1, '%Y-%m-%d')
     interval2 = datetime.datetime.strptime(interval2, '%Y-%m-%d')
@@ -63,6 +63,7 @@ def perc_sunshine():
     file_open = open("Rapport Sunshine.txt","w")
     file_open.write("Percent sunshine hours over the intervall: " + sunshine_percent_hours + " %" + "\nStart Date: " + interval1 + "\nEnd Date: " 
     + interval2 + "\nTotal number of hours: " + hours_from_start_date + "h \nNumber of sunshine hours: " + sunshine_hours + "h")
+    print("Check the project folder for the report!")
     file_open.close()
     
     
@@ -74,8 +75,8 @@ def perc_downfall():
             list_downfall.append(row)
     file.close()
 
-    interval3 = str(input("Enter the first date: "))
-    interval4 = str(input ("Enter the second date: "))
+    interval3 = str(input("Enter the first date, ex: 2020-01-10: "))
+    interval4 = str(input ("Enter the second date, ex: 2020-01-20: "))
 
     interval3 = datetime.datetime.strptime(interval3, '%Y-%m-%d')
     interval4 = datetime.datetime.strptime(interval4, '%Y-%m-%d')
@@ -99,7 +100,9 @@ def perc_downfall():
     file_open_2 = open("Rapport Downfall.txt","w")
     file_open_2.write("Average downfall per hour over the intervall: " + average_downfall_per_hour + " mm/h" + "\nStart Date: " + interval3 + "\nEnd Date: " 
     + interval4 + "\nTotal number of hours: " + hours_from_start_date + " h \nTotal amount of rain: " + downfall_tot + " mm")
+    print("Check the project folder for the report!")
     file_open_2.close()
+
 
 
 def Attribute_over_time(Attribute):
@@ -117,8 +120,8 @@ def interval_day(Attribute):
     elif Attribute == "Downfall":
         df = pd.read_csv("Downfall day.csv", sep=";")
     df = df.set_index("Datum")
-    interval1 = input("Enter the first date: ")
-    interval2 = input ("Enter the second date: ")
+    interval1 = input("Enter the first date, ex: 2020-01-10: ")
+    interval2 = input ("Enter the second date, ex: 2020-01-20: ")
     df = df.loc[interval1:interval2, :]
     df = df.reset_index()
     fig = px.line(df, x="Datum", y=Attribute, title=Attribute + " over time")
@@ -134,7 +137,7 @@ def interval_hour(temp, hours):
     elif Attribute == "Downfall":
         df = pd.read_csv("Downfall hourly.csv", sep=";")
     df1 = df.set_index("Datum")
-    interval1 = input("Enter the first date: ") # 2020-01-10 
+    interval1 = input("Enter the first date, ex: 2020-01-10: ") # 2020-01-10 
     slice_start = int(df1.index.get_loc(interval1).start) #2020-01-10 = index(285) 285, 310 == slice_start = int(285)
     df1 = df1.iloc[slice_start:(slice_start + hours), :] #om du ger interger värde så får du fram ett värde på det indexet. ":" = interval. Till 285 + 48
     df1 = df1.reset_index()
@@ -155,7 +158,8 @@ def multiple_attributes(Attribute1, Attribute2):
     df = df.set_index("Datum")
     df1 = df1.set_index("Datum")  
     fig, axes = plt.subplots(nrows=1, ncols=2)
-    df.plot(ax=axes[0])
+    df.plot(ax=axes[0])           #xticks= range(len(df.index)) ### if you want to change xtick rate, fuse into the paranthesis
+    #ax1.set_xticklabels(df.index)
     df1.plot(ax=axes[1])
     plt.show()
 

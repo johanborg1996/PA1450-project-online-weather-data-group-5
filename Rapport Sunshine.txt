@@ -1,0 +1,5 @@
+Percent sunshine hours over the intervall: 8.302 %
+Start Date: 2020-01-10
+End Date: 2020-02-10
+Total number of hours: 768h 
+Number of sunshine hours: 63.759h
