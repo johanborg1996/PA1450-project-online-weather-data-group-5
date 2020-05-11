@@ -31,15 +31,7 @@ def menu():
         ''').upper()
     return choices
 menus = menu()
-# def read_temp():
 
-#     list_temperature = []
-#     with open('temp.csv', 'r') as file:
-#         reader = csv.reader(file)
-#         for row in reader:
-#             list_temperature.append(row)
-#     print(list_temperature)
-#     return list_temperature
 
 
 def perc_sunshine():
@@ -195,12 +187,4 @@ while menus != "":
             break
         elif inp == "no" or inp == "No":
             menus = menu()
-
-# print("hello")
-
-
-
-#### blabla = index ????
-#### search blabla == index
-#### index + 48 == intervall på 48h
 
