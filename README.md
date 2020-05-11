@@ -4,10 +4,10 @@ Prerequistes:
 
 Download all .csv files from johan-kod to the folder from where you have your workspace in VS code
 
-
 run in terminal:
 
 Pipinstall Plotly
+
 Pipinstall Pandas
 
 
